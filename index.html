@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 端埋点 Demo</title>
+    <!-- 0.导入自动生成代码-->
+    <script charset="UTF-8" src="https://cdn.jsdelivr.net/npm/sa-sdk-javascript@1.15.24/sensorsdata.min.js "></script>
+    <script charset="UTF-8">
+    var sensors = window['sensorsDataAnalytic201505'];
+    sensors.init({
+    server_url: 'http://10.129.6.15:8106/sa?project=default',
+    heatmap:{
+        //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，'not_collect' 表示关闭。搜集 a input button textarea类型
+        clickmap:'default',
+        //是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，'default' 表示开启。
+        scroll_notice_map:'default',
+        //任意类型元素的自动采集
+        collect_tags:{
+                div : true,//默认max_level 是 1，即只支持叶子 div，可配置 1，2，3；也可用
+                li:true,
+                img:true
+            }
+        },
+    is_track_single_page:true,
+    use_client_time:true,
+    send_type:'beacon'    
+    });
+    /*
+    设置事件公共属性
+    建议放在 sensors.quick('autoTrack'); 之前
+    */
+    sensors.registerPage({
+        current_url: location.href,
+        platform_type: "Web"
+    });
+    sensors.quick('autoTrack');
+    </script>
+</head>
+
+<!--1.代码埋点-->
+<script>
+    function search(){
+        sensors.track('search_computer', {
+        ProductName: "MacBook Pro", 
+        ProductPrice: 123.45, 
+        IsAddedToFav: false,
+        });
+    }
+    function setUserProfile(){
+        sensors.setProfile({np:'深圳'});
+    }
+    function signIn(){
+        sensors.login("13560175077");
+    }
+
+</script>
+<body>
+    <div>
+        <!--标题标签-->
+        <h1>一级标题</h1>
+        <h2>二级标题</h2>  
+        <!--段落标签-->
+        <p>
+            神策针对 Web 端支持全埋点、代码埋点和可视化全埋点方式。<br/>
+            本页面为埋点演示 Demo。
+        </p>
+        <!--HTML 链接标签-->
+        <p><a href = "https://www.sensorsdata.cn" title = "神策官网">神策官网</a></p>
+        <!--图像标签-->
+        <img src = "./img/sensorsdata.png" alt = "神策 SDAF 图片">
+    </div>
+    <!--块标签-->
+    <div>
+        <strong>神策分析</strong>，是针对企业级客户推出的深度用户行为分析产品，支持私有化部署，客户端、服务器、业务数据、第三方数据的全端采集和建模，驱动营销渠道效果评估、用户精细化运营改进、产品功能及用户体验优化、老板看板辅助管理决策、产品个性化推荐改造、用户标签体系构建等应用场景。作为 PaaS 平台支持二次开发，可通过 BI、大数据平台、CRM、ERP 等内部 IT 系统，构建用户数据体系，让用户行为数据发挥深远的价值。
+    </div>
+    <!--无序列表-->
+    <ul>
+        <li>无序列表</li>
+        <li data-sensors-click>自动采集点击事件的元素增加属性</li>
+        <li>SPS</li>
+        <li>SF</li>
+    </ul>
+    <!--表单 action向何处发型表单中的数据 method定义表单提交方式-->
+    <form action="" method="post">
+        <p>
+            <label>账号：</label>
+                <input type="text" name="id">
+        </p>
+        <p>
+            <label>密码：</label>
+                <input type="password" name="password">
+        </p>
+        <p>
+            <label>性别：</label>
+                <input type="radio" name="gender" value="1">男
+                <input type="radio" name="gender" value="0">女
+        </p>
+        <p>
+            <label>爱好：</label>
+                <input type="checkbox" name="like" value="sing">唱歌
+                <input type="checkbox" name="like" value="run">跑步
+                <input type="checkbox" name="like" value="swim">游泳
+        </p>
+        <p>
+            <label>籍贯：</label>
+                <select name="np">
+                    <option value="0">北京</option>
+                    <option value="1">上海</option>
+                    <option value="2">广州</option>
+                    <option value="4">深圳</option>
+                </select>
+        </p>
+        <p>
+            <label>照片：</label>
+                <input type="file">
+        </p>
+        <p>
+            <label>你想说点啥：</label>
+                <textarea name="words"></textarea>
+        </p>
+    </form>
+    <p><button onclick="setUserProfile()">注册</button></p>
+    <p><button onclick="signIn()">登录</button></p>
+    <p><button onclick="search()">搜索</button></p>
+    <a href = "#">返回页面顶部</a>
+    <div>
+        <img src="./img/DailyRecommendation-liulian.webp" alt="">
+        <span>
+            <i>猫山王特价榴莲,京东快速达到</i>
+            <p>￥78</p>
+        </span>
+    </div>
+</body>
+</html>
