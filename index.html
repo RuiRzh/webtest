@@ -37,6 +37,16 @@
     });
     sensors.quick('autoTrack');
     </script>
+    
+    <script>
+(function(e,t,n,o){e.PeopleEventsObject=o;e[o]=e[o]||{init:function(t){e[o].apiKey=t},
+setPerson:function(t,n){e[o].person=t;e[o].personTtl=n},forgetPerson:function(){e[o].toForgetPerson=true},track:function(){(e[o].q=e[o].q||[]).push(arguments)},
+updatePerson:function(t){e[o].personToUpdate={person:t}},appendToList:function(t,n){e[o].attributeToAppend={attributeName:t,attribute:n}}};var r=t.createElement("script");
+var s=t.getElementsByTagName("script")[0];r.async=1;r.src=n;s.parentNode.insertBefore(r,s)})
+(window,document,"https://s3.eu-central-1.amazonaws.com/portal-cdn-production/people-events-sdk/pe.latest-2.js","pe");
+ 
+pe.init('09686bc10c594ceac4f2c468dc2b26db-fbd58873-456c-4de7-989d-95af007ca63e');
+</script>
 </head>
 
 <!--1.代码埋点-->
@@ -53,6 +63,10 @@
     }
     function signIn(){
         sensors.login("13560175077");
+    }
+    
+    function email(){
+        pe.setPerson({ email: 'someone@email.com'}, 2000 );
     }
 
 </script>
@@ -124,6 +138,7 @@
     <p><button onclick="setUserProfile()">注册</button></p>
     <p><button onclick="signIn()">登录</button></p>
     <p><button onclick="search()">搜索</button></p>
+    <p><button onclick="email()">setperson测试</button></p>
     <a href = "#">返回页面顶部</a>
     <div>
         <img src="./img/DailyRecommendation-liulian.webp" alt="">
