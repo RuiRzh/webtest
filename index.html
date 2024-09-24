@@ -19,7 +19,7 @@
     <script charset="UTF-8">
     var sensors = window['sensorsDataAnalytic201505'];
     sensors.init({
-    server_url: 'http://10.129.25.180:8106/sa?project=show',
+    server_url: 'https://alpha.demo.sensorsdata.cn/sa?project=ecommerce',
     heatmap:{
         //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，'not_collect' 表示关闭。搜集 a input button textarea类型
         clickmap:'default',
@@ -44,47 +44,8 @@
         current_url: location.href,
         platform_type: "Web"
     });
-    /*
-    登录
-    */
-    sensors.login("13560172032");
     sensors.quick('autoTrack');
     </script>
-    <script src="./abtest.min.js"></script>
-    <script>
-        var abtest = sensors.use("SensorsABTest",{
-         url:"http://10.129.19.61:8202/api/v2/abtest/online/results?project-key=A42C405DEEA8B79D2B5219804D68698AE3A4E045"
-    });
-</script>
-
-<script>
-    function protest(){
-    sensors.registerPage({
-        platform_type: "test"
-    });
-    sensors.track('proptest', {
-        ProductName: "MacBook Pro", 
-        ProductPrice: 123.45, 
-        IsAddedToFav: false,
-        });
-    }
-</script>
-<script>
-    abtest.asyncFetchABTest ({
-    param_name:"col",
-    default_value:0,
-    value_type:"Number",
-    callback: function(result) {
-        if (result == 1){
-            x=document.getElementById("demo") // 找到元素
-            x.style.color="#00FF00";          // 改变样式
-        } else if (result == 2){
-            x=document.getElementById("demo") // 找到元素
-            x.style.color="#FF0000";          // 改变样式
-        }   
-    }
-    });
-</script>
 </head>
 
 <!--1.代码埋点-->
@@ -103,6 +64,7 @@
         sensors.login("13560175077");
     }
 </script>
+    
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRLN9JSB"
