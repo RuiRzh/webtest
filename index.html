@@ -24,48 +24,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web 端埋点 Demo</title>
-    <!-- 0.导入自动生成代码-->
-    <script charset="UTF-8" src="https://cdn.jsdelivr.net/npm/sa-sdk-javascript@1.15.24/sensorsdata.min.js "></script>
-    <script charset="UTF-8">
-    var sensors = window['sensorsDataAnalytic201505'];
-    sensors.init({
-    server_url: 'https://alpha.demo.sensorsdata.cn/sa?project=ecommerce',
-    heatmap:{
-        //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，'not_collect' 表示关闭。搜集 a input button textarea类型
-        clickmap:'default',
-        //是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，'default' 表示开启。
-        scroll_notice_map:'default',
-        //任意类型元素的自动采集
-        collect_tags:{
-                div : true,//默认max_level 是 1，即只支持叶子 div，可配置 1，2，3；也可用
-                li:true,
-                img:true
-            },
-        },
-    is_track_single_page:true,
-    use_client_time:true,
-    send_type:'beacon'    
-    });
-    /*
-    设置事件公共属性
-    建议放在 sensors.quick('autoTrack'); 之前
-    */
-    sensors.registerPage({
-        current_url: location.href,
-        platform_type: "Web"
-    });
-    sensors.quick('autoTrack');
-    </script>
 </head>
 
 <!--1.代码埋点-->
 <script>
     function search(){
-        sensors.track('sensors_search_click', {
-        ProductName: "MacBook Pro", 
-        ProductPrice: 123.45, 
-        IsAddedToFav: false,
-        });
         
         gtag('event', 'GA_search_click', {
             ProductName: "MacBook Pro", 
@@ -74,10 +37,10 @@
         });
     }
     function setUserProfile(){
-        sensors.setProfile({np:'ShenZhen'});
+        
     }
     function signIn(){
-        sensors.login("13560175077");
+        
     }
 </script>
     
