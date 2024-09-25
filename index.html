@@ -61,10 +61,16 @@
 <!--1.代码埋点-->
 <script>
     function search(){
-        sensors.track('search_computer', {
+        sensors.track('sensors_search_click', {
         ProductName: "MacBook Pro", 
         ProductPrice: 123.45, 
         IsAddedToFav: false,
+        });
+        
+        gtag('event', 'GA_search_click', {
+            ProductName: "MacBook Pro", 
+            ProductPrice: 123.45, 
+            IsAddedToFav: false,
         });
     }
     function setUserProfile(){
@@ -83,8 +89,8 @@
     
     <div>
         <!--标题标签-->
-        <h1>一级标题</h1>
-        <h2>二级标题</h2>  
+        <h1>Primary Heading</h1>
+        <h2>Secondary Heading</h2>  
         <!--段落标签-->
         <p>
             Powerful product analytics and real-time CDP that help you personalize your customer experience for better business performance
@@ -96,67 +102,67 @@
     </div>
     <!--块标签-->
     <div>
-        <strong>SensorsData</strong>，是针对企业级客户推出的深度用户行为分析产品，支持私有化部署，客户端、服务器、业务数据、第三方数据的全端采集和建模，驱动营销渠道效果评估、用户精细化运营改进、产品功能及用户体验优化、老板看板辅助管理决策、产品个性化推荐改造、用户标签体系构建等应用场景。作为 PaaS 平台支持二次开发，可通过 BI、大数据平台、CRM、ERP 等内部 IT 系统，构建用户数据体系，让用户行为数据发挥深远的价值。
+        <strong>Sensors Analysis</strong>Seamlessly integrate and analyze user behavior data across all channels, providing real-time insights that understand your users, optimize decisions and boost growth.
     </div>
     <!--无序列表-->
     <ul>
-        <li>无序列表</li>
-        <li data-sensors-click>自动采集点击事件的元素增加属性</li>
+        <li>Unordered List</li>
+        <li data-sensors-click>Add attribute to elements that automatically collect click events</li>
         <li>SPS</li>
         <li>SF</li>
     </ul>
     <!--表单 action向何处发型表单中的数据 method定义表单提交方式-->
     <form action="" method="post">
         <p>
-            <label>账号：</label>
+            <label>Account:</label>
                 <input type="text" name="id">
         </p>
         <p>
-            <label>密码：</label>
+            <label>Password:</label>
                 <input type="password" name="password">
         </p>
         <p>
-            <label>性别：</label>
-                <input type="radio" name="gender" value="1">男
-                <input type="radio" name="gender" value="0">女
+            <label>Gender:</label>
+                <input type="radio" name="gender" value="1">Male
+                <input type="radio" name="gender" value="0">Female
         </p>
         <p>
-            <label>爱好：</label>
-                <input type="checkbox" name="like" value="sing">唱歌
-                <input type="checkbox" name="like" value="run">跑步
-                <input type="checkbox" name="like" value="swim">游泳
+            <label>Hobbies:</label>
+                <input type="checkbox" name="like" value="sing">Singing
+                <input type="checkbox" name="like" value="run">Running
+                <input type="checkbox" name="like" value="swim">Swiming
         </p>
         <p>
-            <label>籍贯：</label>
+            <label>Place of Origin:</label>
                 <select name="np">
-                    <option value="0">北京</option>
-                    <option value="1">上海</option>
-                    <option value="2">广州</option>
-                    <option value="4">深圳</option>
+                    <option value="0">Beijing</option>
+                    <option value="1">Shanghai</option>
+                    <option value="2">Guangzhou</option>
+                    <option value="4">Shenzhen</option>
                 </select>
         </p>
         <p>
-            <label>照片：</label>
+            <label>Photo:</label>
                 <input type="file">
         </p>
         <p>
-            <label>你想说点啥：</label>
+            <label>Do you have any comments or messages you would like to leave?</label>
                 <textarea name="words"></textarea>
         </p>
     </form>
-    <p><button onclick="setUserProfile()">注册</button></p>
+    <p><button onclick="setUserProfile()">Register</button></p>
     <p id="demo">
-        JavaScript 能改变 HTML 元素的样式。
+        JavaScript can change the style of HTML elements.
     </p>
 
-    <p><button onclick="signIn()">登录</button></p>
-    <p><button onclick="search()">搜索</button></p>
-    <p><button onclick="protest()">公共属性测试</button></p>
-    <a href = "#">返回页面顶部</a>
+    <p><button onclick="signIn()">Login</button></p>
+    <p><button onclick="search()">Search</button></p>
+    <p><button onclick="protest()">Common Property Test</button></p>
+    <a href = "#">Return to Top of Page</a>
     <div>
         <img src="./img/DailyRecommendation-liulian.webp" alt="">
         <span>
-            <i>猫山王特价榴莲,京东快速达到</i>
+            <i>Cat Mountain King Special Price Durian, JD Rapid Delivery</i>
             <p>￥78</p>
         </span>
     </div>
